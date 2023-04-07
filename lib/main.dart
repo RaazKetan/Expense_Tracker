@@ -30,7 +30,6 @@ class MyHomePage extends StatelessWidget {
       amount: 19.99,
       date: DateTime.now(),
     ),
-
   ];
 
   @override
@@ -54,10 +53,24 @@ class MyHomePage extends StatelessWidget {
            Text('Chart!'),
            ),
          ),
-         const Card(
-           color: Colors.red,
-           child: Text('List of Tx'),
-         ),
+           Column(
+             children: transactions.map((tx) {
+               return Card(
+                 child: Row(
+                   children: <Widget>[
+                     Container(
+                       child: Text(tx.amount.toString(),
+                       ),
+                     ),
+                     Column(children: <Widget>[
+                       Text(tx.title.toString()),
+                       Text(tx.date.toString()),
+                     ],)
+                   ],
+                 ),
+               );
+             }).toList(),
+           ),
        ],
      ),
     );
