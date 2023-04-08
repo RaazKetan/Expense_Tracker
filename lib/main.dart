@@ -43,7 +43,7 @@ class MyHomePage extends StatelessWidget {
         ),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        // mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Container(
@@ -52,6 +52,28 @@ class MyHomePage extends StatelessWidget {
               color: Colors.blue,
               elevation: 5,
               child: Text('Chart!'),
+            ),
+          ),
+          Card(
+            elevation: 5,
+            child: Container(
+              padding: EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: const <Widget>[
+                TextField(
+                  decoration: InputDecoration(labelText: 'Title'),
+                ),
+                TextField(decoration: InputDecoration(labelText: 'Amount'),),
+                  TextButton(
+                      onPressed:null,
+                      style: ButtonStyle(
+                        foregroundColor:MaterialStatePropertyAll(Colors.purple)
+                      ),
+                      child: Text('Add Transactions'),
+                  ),
+              ],
+              ),
             ),
           ),
           Column(children: transactions.map((tx) {
