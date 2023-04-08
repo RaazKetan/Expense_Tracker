@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
 }
 class MyHomePage extends StatelessWidget {
   //Dummy list of Items
-  //Added form transction.dart
+  //Added form transaction.dart
   final List<Transaction>transactions = [
     Transaction(
       id: 't1',
@@ -26,7 +26,7 @@ class MyHomePage extends StatelessWidget {
     ),
     Transaction(
       id: 't2',
-      title: 'Groceries',
+      title: ' Weekly Groceries',
       amount: 19.99,
       date: DateTime.now(),
     ),
@@ -41,7 +41,7 @@ class MyHomePage extends StatelessWidget {
     ),
     ),
      body: Column(
-       mainAxisAlignment: MainAxisAlignment.center,
+       mainAxisAlignment: MainAxisAlignment.spaceAround,
       crossAxisAlignment: CrossAxisAlignment.stretch,
        children: <Widget>[
          Container(
@@ -59,12 +59,43 @@ class MyHomePage extends StatelessWidget {
                  child: Row(
                    children: <Widget>[
                      Container(
+                       margin:const EdgeInsets.symmetric(
+                           vertical: 10,
+                           horizontal: 15
+                       ),
+                       decoration: BoxDecoration(
+                         border: Border.all(
+                           color: Colors.purple,
+                         width: 2,
+
+                         ),
+                       ),
+                       padding: const EdgeInsets.all(10),
                        child: Text(tx.amount.toString(),
+                         style: const TextStyle(
+                           fontWeight: FontWeight.bold,
+                           fontSize: 20,
+                           color: Colors.purple
+                         ),
                        ),
                      ),
-                     Column(children: <Widget>[
-                       Text(tx.title.toString()),
-                       Text(tx.date.toString()),
+                     Column(
+                       // mainAxisAlignment: MainAxisAlignment.start,
+                       crossAxisAlignment: CrossAxisAlignment.start,
+                       children: <Widget>[
+                       Text(tx.title.toString(),
+                       style: const TextStyle(
+                       fontWeight: FontWeight.bold,
+                         fontSize: 15,
+                         color: Colors.purple,
+                       ),
+                       ),
+                       Text(tx.date.toString(),
+                         style: const TextStyle(
+                           fontWeight: FontWeight.bold,
+                           fontSize: 13,
+                           color: Colors.grey,
+                         ),),
                      ],)
                    ],
                  ),
