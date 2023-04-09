@@ -44,6 +44,14 @@ class MyHomePage extends StatelessWidget {
               child: Text('Chart!'),
             ),
           ),
+          //The main issue which we face now is the transaction list
+          // is triggered by our card below so what we do is to lift the state up
+          //we have add our new transaction list and we have to manage it to
+          //The problem is that our Card is not in our transction list
+          //Now what we can do is that we Cut our Card from here and paste it inot the transaction list file
+          // But our diffrent approach is that we make two diffrnet widgets
+          //one for out text input and second and the input widget and transaction widget into diffrent widget
+          //The advantage is our main is still Stateless
           Card(
             elevation: 5,
             child: Container(
