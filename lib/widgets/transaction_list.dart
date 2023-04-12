@@ -5,11 +5,12 @@ import 'package:intl/intl.dart';
 class TransactionList extends StatelessWidget {
   // const TransactionList({Key? key}) : super(key: key);
 
-
+final List<Transaction>transactions;
+TransactionList(this.transactions);
 
   @override
   Widget build(BuildContext context) {
-    return  Column(children: _userTransaction.map((tx) {
+    return  Column(children: transactions.map((tx) {
       return Card(
         child: Row(children: <Widget>[
           Container(

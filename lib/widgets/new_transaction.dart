@@ -3,8 +3,10 @@ class NewTransaction extends StatelessWidget {
   // const NewTransaction({Key? key}) : super(key: key);
 // String? titleInput;
 // String? amountInput;
+final Function addTx;
   final titleController = TextEditingController();
   final amountController = TextEditingController();
+NewTransaction(this.addTx);
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -29,10 +31,9 @@ class NewTransaction extends StatelessWidget {
               // }
             ),
             TextButton(
-              onPressed:() {
-                // print(titleInput);
-                // print(amountInput);
-              },
+              onPressed:()=>addTx(
+                  titleController.text,
+                  amountController.text),
               style: ButtonStyle(
                   foregroundColor:MaterialStatePropertyAll(Colors.purple)
               ),
@@ -41,6 +42,6 @@ class NewTransaction extends StatelessWidget {
           ],
         ),
       ),
-    ),;
+    );
   }
 }

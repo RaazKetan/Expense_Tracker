@@ -23,12 +23,33 @@ class _UserTransactionsState extends State<UserTransactions> {
       amount: 19.99,
       date: DateTime.now(),
     ),];
+
+  void _addNewTransaction(String txTitle, String txAmount)
+  {
+
+
+    final amount = double.tryParse(txAmount);
+    if (amount == null) {
+      print('Invalid amount: $txAmount');
+      return;
+    }
+    final newTx = Transaction(
+        title: txTitle,
+        amount: amount,
+        date: DateTime.now(),
+        id: DateTime.now().toString()
+    );
+    setState(() {
+      _userTransaction.add(newTx);
+    });
+
+  }
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        NewTransaction(),
-        TransactionList(),
+        NewTransaction(_addNewTransaction),
+        TransactionList(_userTransaction),
       ],
     );
   }
