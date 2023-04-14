@@ -7,6 +7,21 @@ final Function addTx;
   final titleController = TextEditingController();
   final amountController = TextEditingController();
 NewTransaction(this.addTx);
+
+void submitData()
+{
+  final enterTitle = titleController.text;
+  final enterAmount = double.tryParse(amountController.text);
+
+  if(enterTitle.isEmpty || enterAmount! <= 0)
+    {
+      return;
+    }
+  addTx(
+      titleController.text,
+      amountController.text
+  );
+}
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -19,6 +34,7 @@ NewTransaction(this.addTx);
             TextField(
               decoration: InputDecoration(labelText: 'Title'),
               controller: titleController,
+              onSubmitted:(_)=> submitData(),
               // onChanged: (val) {
               //   titleInput = val;
               // },
@@ -26,14 +42,14 @@ NewTransaction(this.addTx);
             TextField(
               decoration: InputDecoration(labelText: 'Amount'),
               controller: amountController,
+              keyboardType: TextInputType.number,
+              onSubmitted:(_)=> submitData(),
               // onChanged: (val) {
               //   amountInput = val;
               // }
             ),
             TextButton(
-              onPressed:()=>addTx(
-                  titleController.text,
-                  amountController.text),
+              onPressed:submitData,
               style: ButtonStyle(
                   foregroundColor:MaterialStatePropertyAll(Colors.purple)
               ),
