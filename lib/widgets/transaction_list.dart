@@ -12,10 +12,10 @@ TransactionList(this.transactions);
   Widget build(BuildContext context) {
     return  Container(
       height: 300,
-
-      child: SingleChildScrollView(
-        child: Column(
-          children: transactions.map((tx) {
+      child: ListView.builder(
+        // We use listView Builder for long list as it is more optimised and renders
+        //donot renders the widget which are out of viewport but renders it when we need it
+        itemBuilder: (context, index) {
           return Card(
             child: Row(children: <Widget>[
               Container(
@@ -30,7 +30,7 @@ TransactionList(this.transactions);
                   ),
                 ),
                 padding: const EdgeInsets.all(10),
-                child: Text('₹${tx.amount}',
+                child: Text('₹${transactions[index].amount}',
                   style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
@@ -42,7 +42,8 @@ TransactionList(this.transactions);
                 // mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(tx.title.toString(),
+                  Text(
+                    transactions[index].title.toString(),
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 15,
@@ -50,7 +51,8 @@ TransactionList(this.transactions);
                     ),
                   ),
                   Text(
-                    DateFormat.yMMMd().format(tx.date as DateTime),
+                    DateFormat.yMMMd().format(
+                        transactions[index].date as DateTime),
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 13,
@@ -62,8 +64,8 @@ TransactionList(this.transactions);
             ],
             ),
           );
-        }).toList(),
-        ),
+        },
+        itemCount: transactions.length,
       ),
     );
   }
