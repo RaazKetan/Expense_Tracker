@@ -34,6 +34,8 @@ void submitData()
       titleController.text,
       amountController.text
   );
+ //here we use its pop method to close the modal sheet that opens
+  Navigator.of(context).pop();
 }
 
   @override
