@@ -10,38 +10,6 @@ class UserTransactions extends StatefulWidget {
 }
 
 class _UserTransactionsState extends State<UserTransactions> {
-  final List<Transaction>_userTransaction = [
-    Transaction(
-      id: 't1',
-      title: 'New Shoes',
-      amount: 69.99,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't2',
-      title: ' Weekly Groceries',
-      amount: 19.99,
-      date: DateTime.now(),
-    ),];
-
-  void _addNewTransaction(String txTitle, String txAmount)
-  {
-
-
-    final amount = double.tryParse(txAmount);
-    if (amount == null) {
-      print('Invalid amount: $txAmount');
-      return;
-    }
-    final newTx = Transaction(
-        title: txTitle,
-        amount: amount,
-        date: DateTime.now(),
-        id: DateTime.now().toString()
-    );
-    setState(() {
-      _userTransaction.add(newTx);
-    });
 
   }
   @override

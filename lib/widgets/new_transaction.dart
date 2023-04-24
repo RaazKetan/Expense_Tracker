@@ -1,12 +1,25 @@
 import 'package:flutter/material.dart';
-class NewTransaction extends StatelessWidget {
+
+//okay now the issue we face is that when we click on the title or he amount section the data which is entered in those text fields gets lost so to deal with it we
+//chanage from the statless widget to statefull widget
+
+//why we did it? the flutter does it internalyy it re-evalualtes its widgets from time to time and for stateless widget the internally store data is lost
+class NewTransaction extends StatefulWidget {
   // const NewTransaction({Key? key}) : super(key: key);
 // String? titleInput;
 // String? amountInput;
 final Function addTx;
-  final titleController = TextEditingController();
-  final amountController = TextEditingController();
+
 NewTransaction(this.addTx);
+
+  @override
+  State<NewTransaction> createState() => _NewTransactionState();
+}
+
+class _NewTransactionState extends State<NewTransaction> {
+  final titleController = TextEditingController();
+
+  final amountController = TextEditingController();
 
 void submitData()
 {
@@ -17,11 +30,12 @@ void submitData()
     {
       return;
     }
-  addTx(
+  widget.addTx(
       titleController.text,
       amountController.text
   );
 }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -50,7 +64,7 @@ void submitData()
             ),
             TextButton(
               onPressed:submitData,
-              style: ButtonStyle(
+              style: const ButtonStyle(
                   foregroundColor:MaterialStatePropertyAll(Colors.purple)
               ),
               child: Text('Add Transactions'),
